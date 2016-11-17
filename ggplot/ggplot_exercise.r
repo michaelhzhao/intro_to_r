@@ -1,4 +1,5 @@
 library(ggplot2)
+install.packages("data.table")
 library(data.table)
 library(reshape2)
 library(dplyr)
@@ -17,6 +18,11 @@ suicides <- suicides %>%
 # (year on the x axis, deaths on the y axis, different line for each age).
 # facet by sex.
 
+line_by_state <- ggplot(suicides, aes(x=year, y=deaths, color=age)) +
+  geom_line() +
+  facet_wrap(~sex, scales="free")
+
+line_by_state
 
 ##extra credit####
 
